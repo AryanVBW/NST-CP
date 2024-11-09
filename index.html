@@ -1,1 +1,36 @@
-<iframe src="https://calendar.google.com/calendar/embed?src=iu1iul1u3n8ic3s78f4df15u4o%40group.calendar.google.com&ctz=Asia%2FKolkata" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+<div class="calendar-container">
+  <iframe src="https://calendar.google.com/calendar/embed?src=iu1iul1u3n8ic3s78f4df15u4o%40group.calendar.google.com&ctz=Asia%2FKolkata"
+          style="border: 0;"
+          width="100%"
+          height="100%"
+          frameborder="0"
+          scrolling="no">
+  </iframe>
+</div>
+
+<style>
+  .calendar-container {
+    width: 100%;
+    height: 600px; 
+  }
+
+
+  @media (max-width: 1024px) {
+    .calendar-container {
+      height: 500px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .calendar-container {
+      height: 400px;
+    }
+  }
+
+
+  @media (max-width: 480px) {
+    .calendar-container {
+      height: 300px;
+    }
+  }
+</style>
