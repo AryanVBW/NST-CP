@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NST Competitive Programming Club Events</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Main container styling */
+    .main-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+      flex-grow: 1;
+    }
+
+    /* Header section styling */
+    .header {
+      background-color: #3f51b5;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      border-radius: 5px;
+    }
+
+    .header h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    /* Upcoming events section */
+    .upcoming-events {
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    .upcoming-events h2 {
+      font-size: 1.8em;
+      color: #333;
+    }
+
+    .calendar-container {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
+    /* Subscription section */
+    .subscribe-section {
+      margin: 40px 0;
+      text-align: center;
+      padding: 20px;
+      background-color: #f5f5f5;
+      border-radius: 5px;
+    }
+
+    .subscribe-section h2 {
+      font-size: 1.8em;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .subscribe-section p {
+      font-size: 1em;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .subscribe-section input[type="email"] {
+      padding: 10px;
+      width: 250px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+      margin-right: 10px;
+    }
+
+    .subscribe-section button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #ff9800;
+      color: white;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .subscribe-section button:hover {
+      background-color: #e68900;
+    }
+
+    /* Footer styling */
+    .footer {
+      background-color: #3f51b5;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+
+    .footer p {
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header class="header">
+    <h1>NST Competitive Programming Club</h1>
+    <p>Stay Updated with Our Latest Events and Competitions</p>
+  </header>
+
+  <!-- Main Container -->
+  <div class="main-container">
+
+    <!-- Upcoming Events Section -->
+    <section class="upcoming-events">
+      <h2>Upcoming Events</h2>
+      <div class="calendar-container">
+        <iframe id="calendar-iframe"
+                src="https://calendar.google.com/calendar/embed?src=iu1iul1u3n8ic3s78f4df15u4o%40group.calendar.google.com&ctz=Asia%2FKolkata&mode=month"
+                style="border: 0;"
+                width="100%"
+                height="100%"
+                frameborder="0"
+                scrolling="no">
+        </iframe>
+      </div>
+    </section>
+
+    <!-- Email Subscription Section -->
+    <section class="subscribe-section">
+      <h2>Get Notifications for Upcoming Contests</h2>
+      <p>Enter your email below to receive updates and notifications for our upcoming contests and events.</p>
+      <form id="subscription-form">
+        <input type="email" placeholder="Your Email Address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <p>&copy; 2024 NST Competitive Programming Club. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // JavaScript for responsive calendar view
+    function updateCalendarView() {
+      const iframe = document.getElementById("calendar-iframe");
+      const baseUrl = "https://calendar.google.com/calendar/embed?src=iu1iul1u3n8ic3s78f4df15u4o%40group.calendar.google.com&ctz=Asia%2FKolkata";
+
+      if (window.innerWidth > 1024) {
+        iframe.src = `${baseUrl}&mode=month`; // Desktop view: Month view
+      } else if (window.innerWidth > 768) {
+        iframe.src = `${baseUrl}&mode=week`; // Tablet view: Week view
+      } else {
+        iframe.src = `${baseUrl}&mode=agenda`; // Mobile view: Agenda view
+      }
+    }
+
+    // Update calendar view on load and when window is resized
+    window.addEventListener("load", updateCalendarView);
+    window.addEventListener("resize", updateCalendarView);
+
+    // Handle subscription form submission
+    document.getElementById("subscription-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const emailInput = this.querySelector("input[type='email']");
+      const email = emailInput.value;
+
+      // Placeholder for form submission logic
+      alert(`Subscribed with email: ${email}`);
+      emailInput.value = ""; // Clear input field
+    });
+  </script>
+
+</body>
+</html>
