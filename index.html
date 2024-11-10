@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CP Calendar By anubhav sir </title>
+  <title>CP Calendar By anubhav sir</title>
   <style>
     /* Basic reset */
     * {
@@ -83,13 +83,14 @@
 <div class="calendar-wrapper">
   <!-- Calendar Header -->
   <div class="calendar-header">
-    <h1>Upcoming CP Contest </h1>
+    <h1>Upcoming CP Contest</h1>
     <button class="add-events-btn" onclick="addToGoogleCalendar()">Add All Events to Google Calendar</button>
   </div>
 
   <!-- Google Calendar Embed -->
   <div class="calendar-container">
-    <iframe src="https://calendar.google.com/calendar/embed?src=iu1iul1u3n8ic3s78f4df15u4o%40group.calendar.google.com&ctz=Asia%2FKolkata"
+    <iframe id="calendar-iframe"
+            src=""
             style="border: 0;"
             width="100%"
             height="100%"
@@ -101,12 +102,26 @@
 
 <script>
   function addToGoogleCalendar() {
-    // URL for adding all events to Google Calendar
     const calendarLink = "https://calendar.google.com/calendar/u/0/r?cid=iu1iul1u3n8ic3s78f4df15u4o%40group.calendar.google.com";
-    
-    // Open the Google Calendar link in a new tab
     window.open(calendarLink, "_blank");
   }
+
+  function updateCalendarView() {
+    const iframe = document.getElementById("calendar-iframe");
+    const baseUrl = "https://calendar.google.com/calendar/embed?src=iu1iul1u3n8ic3s78f4df15u4o%40group.calendar.google.com&ctz=Asia%2FKolkata";
+    
+    if (window.innerWidth > 1024) {
+      iframe.src = `${baseUrl}&mode=month`; // Desktop view: Month view
+    } else if (window.innerWidth > 768) {
+      iframe.src = `${baseUrl}&mode=week`; // Tablet view: Week view
+    } else {
+      iframe.src = `${baseUrl}&mode=agenda`; // Mobile view: Agenda view
+    }
+  }
+
+  // Update calendar view on load and when window is resized
+  window.addEventListener("load", updateCalendarView);
+  window.addEventListener("resize", updateCalendarView);
 </script>
 
 </body>
