@@ -1,36 +1,113 @@
-<div class="calendar-container">
-  <iframe src="https://calendar.google.com/calendar/embed?src=iu1iul1u3n8ic3s78f4df15u4o%40group.calendar.google.com&ctz=Asia%2FKolkata"
-          style="border: 0;"
-          width="100%"
-          height="100%"
-          frameborder="0"
-          scrolling="no">
-  </iframe>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Google Calendar Embed</title>
+  <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Container styling */
+    .calendar-wrapper {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Header styling */
+    .calendar-header {
+      background-color: #3f51b5;
+      color: white;
+      padding: 15px;
+      border-radius: 5px 5px 0 0;
+    }
+
+    .calendar-header h1 {
+      font-size: 1.8em;
+    }
+
+    /* Button styling */
+    .calendar-header .add-events-btn {
+      background-color: #ff9800;
+      color: white;
+      padding: 10px 20px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background-color 0.3s;
+    }
+
+    .calendar-header .add-events-btn:hover {
+      background-color: #e68900;
+    }
+
+    /* Responsive Calendar Container */
+    .calendar-container {
+      width: 100%;
+      height: 600px; /* Default height for desktop */
+      border: 1px solid #ddd;
+      border-radius: 0 0 5px 5px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      .calendar-container {
+        height: 500px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .calendar-container {
+        height: 400px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .calendar-container {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="calendar-wrapper">
+  <!-- Calendar Header -->
+  <div class="calendar-header">
+    <h1>Upcoming Events</h1>
+    <button class="add-events-btn" onclick="addToGoogleCalendar()">Add All Events to Google Calendar</button>
+  </div>
+
+  <!-- Google Calendar Embed -->
+  <div class="calendar-container">
+    <iframe src="https://calendar.google.com/calendar/embed?src=iu1iul1u3n8ic3s78f4df15u4o%40group.calendar.google.com&ctz=Asia%2FKolkata"
+            style="border: 0;"
+            width="100%"
+            height="100%"
+            frameborder="0"
+            scrolling="no">
+    </iframe>
+  </div>
 </div>
 
-<style>
-  .calendar-container {
-    width: 100%;
-    height: 600px; 
+<script>
+  function addToGoogleCalendar() {
+    // URL for adding all events to Google Calendar
+    const calendarLink = "https://calendar.google.com/calendar/u/0/r?cid=iu1iul1u3n8ic3s78f4df15u4o%40group.calendar.google.com";
+    
+    // Open the Google Calendar link in a new tab
+    window.open(calendarLink, "_blank");
   }
+</script>
 
-
-  @media (max-width: 1024px) {
-    .calendar-container {
-      height: 500px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .calendar-container {
-      height: 400px;
-    }
-  }
-
-
-  @media (max-width: 480px) {
-    .calendar-container {
-      height: 300px;
-    }
-  }
-</style>
+</body>
+</html>
